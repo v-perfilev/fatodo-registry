@@ -11,8 +11,8 @@
     <groupId>com.persoff68</groupId>
     <artifactId>fatodo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>base-skeleton</name>
-    <description>base-skeleton for FaToDo</description>
+    <name>fatodo-discovery-service</name>
+    <description>Discovery service for FaToDo</description>
 
     <properties>
         <java.version>13</java.version>

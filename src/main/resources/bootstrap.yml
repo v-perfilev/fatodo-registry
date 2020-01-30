@@ -1,6 +1,6 @@
 spring:
   application:
-    name: base-skeleton
+    name: fatodo-discovery-service
   cloud:
     config:
       fail-fast: true
