@@ -4,6 +4,8 @@ WORKDIR /build
 COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
+RUN ./mvnw verify clean --fail-never
+
 COPY src src
 RUN ./mvnw install -DskipTests
 
