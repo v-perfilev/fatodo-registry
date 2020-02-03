@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class FaToDoDiscoveryServiceApplication {
+public class FaToDoRegistryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FaToDoDiscoveryServiceApplication.class, args);
+        SpringApplication.run(FaToDoRegistryApplication.class, args);
     }
 
 }

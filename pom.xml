@@ -11,8 +11,8 @@
     <groupId>com.persoff68</groupId>
     <artifactId>fatodo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>fatodo-discovery-service</name>
-    <description>Discovery service for FaToDo</description>
+    <name>fatodo-registry</name>
+    <description>Registry for FaToDo</description>
 
     <properties>
         <java.version>13</java.version>

@@ -1,2 +1,2 @@
-# FaToDo discovery-service
-FaToDo discovery service based on base-skeleton.
+# FaToDo registry
+FaToDo registry based on base-skeleton.
