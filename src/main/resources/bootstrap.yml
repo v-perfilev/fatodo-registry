@@ -1,6 +1,7 @@
 spring:
   application:
     name: registry
+
   cloud:
     config:
       uri: http://${CONFIG_SERVER_HOST:localhost}:8888
