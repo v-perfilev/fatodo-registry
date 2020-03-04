@@ -1,4 +1,4 @@
-image: openjdk:13-alpine
+image: persoff68/alpine-openjdk-13-glibc
 
 variables:
   MAVEN_CLI_OPTS: "-ntp --batch-mode"
@@ -25,7 +25,7 @@ build:
 test:
   stage: test
   script:
-    - ./mvnw $MAVEN_CLI_OPTS test
+    - ./mvnw $MAVEN_CLI_OPTS verify
   artifacts:
     paths:
       - target/
