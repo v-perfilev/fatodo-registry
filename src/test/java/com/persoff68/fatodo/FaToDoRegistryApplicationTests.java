@@ -26,9 +26,9 @@ class FaToDoRegistryApplicationTests {
 
     @Test
     void contextLoads() throws Exception {
-        BaseSkeletonApplication.main(new String[]{});
+        FaToDoRegistryApplication.main(new String[]{});
         mvc.perform(get("/"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk());
     }
 
 }

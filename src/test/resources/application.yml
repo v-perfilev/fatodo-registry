@@ -4,3 +4,8 @@ app:
     authorizationPrefix: Bearer
     tokenSecret: test_tokenSecret
     tokenExpirationMSec: 864000000
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
