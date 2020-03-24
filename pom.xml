@@ -20,12 +20,17 @@
         <!-- Dependency versions -->
         <java.version>13</java.version>
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
+        <lombok.version>1.18.10</lombok.version>
         <!-- Plugin versions -->
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
         <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <jacoco.utReportFolder>${project.build.directory}/jacoco/test</jacoco.utReportFolder>
+        <jacoco.utReportFile>${jacoco.utReportFolder}/test.exec</jacoco.utReportFile>
+        <jacoco.itReportFolder>${project.build.directory}/jacoco/integrationTest</jacoco.itReportFolder>
+        <jacoco.itReportFile>${jacoco.itReportFolder}/integrationTest.exec</jacoco.itReportFile>
         <!-- Profiles -->
         <dev.profile>dev</dev.profile>
         <docker.profile>docker</docker.profile>
@@ -41,6 +46,13 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- Lombok management -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -59,6 +71,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <!-- Test -->
@@ -164,17 +184,44 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>default-prepare-agent</id>
+                        <id>pre-unit-tests</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <destFile>${jacoco.utReportFile}</destFile>
+                        </configuration>
                     </execution>
                     <execution>
-                        <id>default-report</id>
-                        <phase>prepare-package</phase>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <dataFile>${jacoco.utReportFile}</dataFile>
+                            <outputDirectory>${jacoco.utReportFolder}</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>pre-integration-tests</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${jacoco.itReportFile}</destFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-tests</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report-integration</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${jacoco.itReportFile}</dataFile>
+                            <outputDirectory>${jacoco.itReportFolder}</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
