@@ -9,11 +9,11 @@ import java.util.Properties;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class FaToDoRegistryApplication {
+public class FatodoRegistryApplication {
 
     public static void main(String[] args) {
         Properties defaultProfileProperties = AppProfileUtils.getDefaultProfile();
-        SpringApplication app = new SpringApplication(FaToDoRegistryApplication.class);
+        SpringApplication app = new SpringApplication(FatodoRegistryApplication.class);
         app.setDefaultProperties(defaultProfileProperties);
         app.run();
     }

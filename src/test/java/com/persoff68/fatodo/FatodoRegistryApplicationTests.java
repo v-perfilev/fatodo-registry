@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-class FaToDoRegistryApplicationTests {
+class FatodoRegistryApplicationTests {
 
     @Autowired
     WebApplicationContext context;
@@ -26,7 +26,7 @@ class FaToDoRegistryApplicationTests {
 
     @Test
     void contextLoads() throws Exception {
-        FaToDoRegistryApplication.main(new String[]{});
+        FatodoRegistryApplication.main(new String[]{});
         mvc.perform(get("/"))
                 .andExpect(status().isOk());
     }
