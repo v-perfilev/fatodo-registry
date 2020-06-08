@@ -1,2 +1,2 @@
 # Fatodo registry
-FaToDo registry based on base-skeleton.
+Fatodo registry based on base-skeleton.
