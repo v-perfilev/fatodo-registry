@@ -5,6 +5,15 @@ app:
     tokenSecret: test_tokenSecret
     tokenExpirationMSec: 864000000
 
+server:
+  address: localhost
+  port: 10344
+
+spring:
+  cloud:
+    config:
+      enabled: false
+
 eureka:
   client:
     registerWithEureka: false
