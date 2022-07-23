@@ -39,6 +39,7 @@ unit-tests:
   except:
     variables:
       - $DEPLOY_ONLY
+      - $NEXUS_ONLY
 
 integration-tests:
   stage: IT
@@ -53,6 +54,7 @@ integration-tests:
   except:
     variables:
       - $DEPLOY_ONLY
+      - $NEXUS_ONLY
 
 contract-tests:
   stage: IT
@@ -62,12 +64,15 @@ contract-tests:
     - ./mvnw $MAVEN_CLI_OPTS initialize test-compile failsafe:integration-test failsafe:verify $MAVEN_OPTS
       -Pcontracts
       -Dmaven.repo.url=$MAVEN_URL
+      -Dmaven.repo.username=$MAVEN_USERNAME
+      -Dmaven.repo.password=$MAVEN_PASSWORD
   artifacts:
     paths:
       - target/
   except:
     variables:
       - $DEPLOY_ONLY
+      - $NEXUS_ONLY
 
 sonar:
   stage: analyze
@@ -84,6 +89,7 @@ sonar:
   except:
     variables:
       - $DEPLOY_ONLY
+      - $NEXUS_ONLY
 
 checkstyle:
   stage: analyze
@@ -92,6 +98,7 @@ checkstyle:
   except:
     variables:
       - $DEPLOY_ONLY
+      - $NEXUS_ONLY
 
 publish-to-docker:
   image: docker:20
